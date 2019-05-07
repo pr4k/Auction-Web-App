@@ -1,0 +1,60 @@
+{% extends "layout/base.html" %}
+{% block title %}{{ Product.name }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron  margin-top">
+  <div class="container">
+    <h1 class="display-4 text-center">{{ Product.name }}</h1>
+    <img src="/static/img/{{ Product.picturefilename }}" alt="product-picture" class="d-block mx-auto mt-3" style="width:50%;">
+    <h4 class="text-center mt-4"><strong>Project Description: </strong><br>{{ Product.description }}</h4>
+    <br>
+    {% if logged_in and User.id != Product.user%}
+    <div class="col-md-6 mx-auto">
+        {% if closed !=True %}
+      <form action="" method="POST">
+          
+        <div class="form-group">
+          <label for="placebid">Enter Bid Amount: {{ closed}} </label>
+          <div class="input-group">
+            {% if check %} <div class="alert">Bid is lesser than required</div> {% endif %}
+            <input class="form-control validate " type="text" name="bid" placeholder="Enter Bid Amount (in Rupees)">
+            <div class="input-group-append">
+              <button class="btn btn-primary" >Submit</button>
+            </div>
+          </div>
+           
+        </div>
+
+      </form>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+<div class="container">
+  {% if closed %}
+    <div class="alert alert-success p-5 mb-2" role="alert">
+        Bid Closed! Winner is: <strong>{{ Winnername }}</strong> with bid amount <strong>{{ Winnerbid }}</strong>
+      </div>
+  {% endif %}
+  <h2 class="text-center mb-5">Bids Placed:</h2>
+  <table class="table mb-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Bidder</th>
+        <th scope="col">Bid Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for key,value in Bids.items() %}
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ key }}</td>
+          <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

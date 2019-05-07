@@ -1,0 +1,42 @@
+{% extends "layout/base.html" %}
+{% block title %}Register{% endblock %}
+{% block head %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+{% block content %}
+<div class="registform pt-5">
+  <div class="text-center">
+    <h1 class="display-3">Register</h1>
+    <p>Fill out the form and get started instantly </p>
+    <p><strong>Please keep your credentials safe all the time :).</strong></p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-lg-6 border border-primary p-3">
+        <form method="POST">
+          <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> Name</label>
+            <input type="text" name="name" class="form-control validate" id="name" placeholder="Enter Name">
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope-open"></i> Email address</label>
+            <input type="email" name="email" class="form-control validate" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="pass"><i class="fas fa-key"></i> Password</label>
+            <input type="password" name="password" class="form-control validate" id="password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="recaptcha">Prove You're not a Bot <i class="fas fa-robot"></i></label>
+            <div class="g-recaptcha" data-sitekey="6LeshgcUAAAAAIsnJS-9ZjGAOTjy-6yO2QjHpXQA"></div>
+          </div>
+          <button type="submit" name="action" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Register!</button>
+        </form>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

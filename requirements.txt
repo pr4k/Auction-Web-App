@@ -1,0 +1,5 @@
+Flask==0.11.1
+flask-oauth==0.12
+flask_sslify==0.1.5
+peewee==2.8.5
+requests==2.9.1
